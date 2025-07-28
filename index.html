@@ -1,1 +1,79 @@
-Initial commit: birthday surprise HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Sejal 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Comic Sans MS", cursive;
+      background: url('https://i.imgur.com/nRNdIbj.jpg') no-repeat center center/cover;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .message {
+      position: absolute;
+      top: 30%;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 5px #000;
+      font-size: 2em;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px white; }
+      to { text-shadow: 0 0 30px deeppink; }
+    }
+
+    .falling {
+      position: absolute;
+      top: -10px;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .falling span {
+      position: absolute;
+      display: block;
+      color: white;
+      animation: fall 10s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100vh); }
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    🎂 Happy Birthday Sejal!<br>
+    You are truly a Princess 👑<br>
+    Wishing you love, joy & endless smiles! 💖
+  </div>
+
+  <div class="falling" id="falling"></div>
+
+  <script>
+    const fallingContainer = document.getElementById("falling");
+    const symbols = ['🤍','✨','💫','🌟','⭐','❄️'];
+
+    for (let i = 0; i < 50; i++) {
+      const span = document.createElement("span");
+      span.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.fontSize = Math.random() * 24 + 12 + "px";
+      span.style.animationDuration = Math.random() * 10 + 5 + "s";
+      fallingContainer.appendChild(span);
+    }
+  </script>
+</body>
+</html>
